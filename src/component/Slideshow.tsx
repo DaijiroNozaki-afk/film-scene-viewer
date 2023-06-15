@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Slideshow = () => {
+    // console.log(selected);
   // ファイル名の配列を格納する
   const imgDir = "./images/"
   const fileName: string[] = [
