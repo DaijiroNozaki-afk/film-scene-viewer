@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   // ファイル名の配列を格納する
   const imgDir = "./images/"
-  let fileName = [
+  const fileName: string[] = [
     '01.jpg',
     '02.jpg',
     '03.jpg',
@@ -16,36 +16,32 @@ function App() {
     '09.jpg',
     '10.jpg',
   ]
-  const [imgName, setImgName] = useState()
+  let fileNum: number = 0; // 現在表示しているファイル名の配列番号
   // 現在の画像ファイル名
-  const [viewImg, setViewImg] = useState(imgDir + fileName[0])
-  // console.log(imgName[0])
-  // 画像を切り替える
-  const [count, setCount] = useState(0)
+  const [viewImg, setViewImg] = useState<string>(imgDir + fileName[0])
+  // 画像切り替えの関数
+  const changeImg = (e: number) => {
+    let nowFile = imgDir + fileName[e]
+    setViewImg(nowFile)
+  }
+  // 一定の時間で画像を切り替える
+  const [count, setCount] = useState<number>(0)
   useEffect(() => {
-    const interval = setInterval(() => {
-       setCount(c => c + 1)
+    const interval: NodeJS.Timer = setInterval(() => {
+       setCount(c => c + 1);
+       (fileNum === fileName.length - 1)? fileNum = 0 : fileNum ++
+       changeImg(fileNum)
     }, 1000)
     return () => clearInterval(interval)
   }, [])
-
-  // const imgChange = () => {
-  //   count++
-
-  //   //カウントが最大になれば配列を初期値に戻すため「0」を指定する
-  //   if (count == imgName.length) count = 0
-    
-  //   //画像切り替え
-  //   setViewImg(imgName[count])
-  //   // <img src='./images/{imgNum[count]}' alt="" className="src" />
-  //   // 1秒ごとに実施
-  //   setTimeout(imgChange, 1000)
-  // }
+  //入力フォームの表示
+  //時間間隔は15秒、30秒、60秒、2分、5分のどれかが選択できる
+  //スタートボタンを押すと、スライドショーが始まる
+  //全ての画像を表示し終えると、入力フォームに戻る
   return (
     <div className="App">First view.
       <div className="imageClass">
       <img src={viewImg} alt="" className="src" />
-      {count}
       </div>
     </div>
   );
