@@ -8,7 +8,13 @@ interface Radio {
     value: number
 }
 
-const Home: FC<{ updateSelected: (e: number) => void, selected: number }>  = ({ updateSelected, selected }) => {
+const Home: FC<{
+        updateSelected: (e: number) => void,
+        selected: number,
+        finished: boolean
+    }>  = ({
+         updateSelected, selected, finished
+    }) => {
     console.log(selected)  // 60
     // ラジオボタン切り替えイベント
     const changeValue = (event: React.ChangeEvent<HTMLInputElement>) => updateSelected(
@@ -62,7 +68,11 @@ const Home: FC<{ updateSelected: (e: number) => void, selected: number }>  = ({ 
             })}
         </div>
         <div>{selected}が選択されました。</div>
-        <div className="viwer-message">ビューワが終了しました。お疲れさまでした。</div>
+        <div className="viwer-message">
+            { 
+                finished ? `ビューワを終了しました。お疲れさまでした。` : "フィルムビューワを開始できます。"
+            }
+        </div>
         <button onClick={startViewer}>開始</button>
     </div>
     )

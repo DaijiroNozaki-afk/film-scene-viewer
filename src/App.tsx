@@ -9,16 +9,25 @@ function App() {
   // 選択中のラジオボタンvalue
   const [selected, setSelected] = useState<number>(60)
   const updateSelected = (e: number): void => setSelected(e) //プロップスに送るための関数
+  // ビューワ終了のブール値
+  const [finished, setFinished] = useState<boolean>(false)
   return (
     <div className="App">
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home 
-          updateSelected = {updateSelected}
-          selected = {selected} />} />
-        <Route path="/slideshow" element={<Slideshow
-        selected = {selected} />} />
+        <Route path="/" element={
+          <Home 
+            updateSelected = {updateSelected}
+            selected = {selected}
+            finished = {finished}
+          />} />
+        <Route path="/slideshow" element={
+          <Slideshow
+            selected = {selected} 
+            finished = {finished}
+            setFinished = {setFinished}
+          />} />
       </Routes>
     </Router>
     </div>

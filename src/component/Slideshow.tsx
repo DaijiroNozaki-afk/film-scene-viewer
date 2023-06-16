@@ -1,7 +1,13 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 
-const Slideshow: FC<{selected: number }> = ({ selected }) => {
+const Slideshow: FC<{
+  selected: number,
+  finished: boolean,
+  setFinished: (e: boolean) => void,
+}> = ({
+   selected, finished, setFinished
+}) => {
     // console.log(selected);
   // ファイル名の配列を格納する
   const imgDir = "./images/"
@@ -43,7 +49,8 @@ const Slideshow: FC<{selected: number }> = ({ selected }) => {
   // スライドショーを終了する
   const navigate = useNavigate()
   const stopViewer = () => {
-      navigate('/')
+    setFinished(true)  //終了メッセージを表示させる
+    navigate('/')
   }
   return (
     <div>
