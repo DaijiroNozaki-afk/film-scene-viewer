@@ -1,12 +1,12 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
+import './Slideshow.css'
 
 const Slideshow: FC<{
   selected: number,
-  finished: boolean,
   setFinished: (e: boolean) => void,
 }> = ({
-   selected, finished, setFinished
+   selected, setFinished
 }) => {
     // console.log(selected);
   // ファイル名の配列を格納する
@@ -30,6 +30,7 @@ const Slideshow: FC<{
   const changeImg = (e: number) => {
     let nowFile = imgDir + fileName[e]
     setViewImg(nowFile)
+    // カウントダウンの数字を戻す#####
   }
   // 一定の時間で画像を切り替える
   const [count, setCount] = useState<number>(0)
@@ -39,6 +40,15 @@ const Slideshow: FC<{
        (fileNum === fileName.length - 1)? stopViewer() : fileNum ++
        changeImg(fileNum)
     }, 1000 * selected)
+    return () => clearInterval(interval)
+  }, [])
+  // カウントダウンを表示
+  const [countdown, setCountDown] = useState<number>(0)
+  useEffect(() => {
+    const interval: NodeJS.Timer = setInterval(() => {
+       setCountDown(c => c + 1);
+       // 一秒引いて表示する#####
+    }, 1000)
     return () => clearInterval(interval)
   }, [])
   //入力フォームの表示
@@ -53,9 +63,9 @@ const Slideshow: FC<{
     navigate('/')
   }
   return (
-    <div>
-      <div className="imageClass">
-      <img src={viewImg} alt="" className="src" />
+    <div className='p-slideshow'>
+      <div className="p-ss-view">
+      <img src={viewImg} alt="" className="p-ss-img" />
       </div>
     </div>
   )

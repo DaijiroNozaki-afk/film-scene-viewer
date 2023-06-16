@@ -25,7 +25,6 @@ function App() {
         <Route path="/slideshow" element={
           <Slideshow
             selected = {selected} 
-            finished = {finished}
             setFinished = {setFinished}
           />} />
       </Routes>

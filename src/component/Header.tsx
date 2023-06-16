@@ -7,7 +7,6 @@ const Header = () => {
         <h1>Film scene viewer</h1>
         <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/slideshow">Slideshow</Link></li>
         </ul>
     </header>
   )

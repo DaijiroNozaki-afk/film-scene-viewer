@@ -1,0 +1,15 @@
+.p-slideshow {
+    width: 100%;
+    height: 90vh;
+}
+.p-ss-view {
+    width: 100%;
+}
+.p-ss-img {
+    width: 100%;
+    height: auto;
+
+}
+/* <div className='p-slideshow'>
+<div className="p-ss-view">
+<img src={viewImg} alt="" className="p-ss-img" /> */
