@@ -17,7 +17,8 @@ function App() {
         <Route path="/" element={<Home 
           updateSelected = {updateSelected}
           selected = {selected} />} />
-        <Route path="/slideshow" element={<Slideshow />} />
+        <Route path="/slideshow" element={<Slideshow
+        selected = {selected} />} />
       </Routes>
     </Router>
     </div>

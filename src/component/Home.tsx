@@ -1,5 +1,7 @@
 import React, { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './Home.css'
+
 // ラジオボタン設定
 interface Radio {
     label: string
@@ -42,14 +44,17 @@ const Home: FC<{ updateSelected: (e: number) => void, selected: number }>  = ({ 
     }
     return (
     <div className='container form-check'>
-        <div className="row">
+        <h3 className="form-arega">ビューワの設定</h3>
+        <div className="select-time">
+            <p className="select-title">間隔</p>
             {radioButtons.map(radio => {
                 return (
                     <div className="col-4" key={radio.label}>
                         {/* checked 属性に式を定義する */}
                         <input type="radio" name="sweets" className="form-check-input"
+                            id={radio.label}
                             value={radio.value} checked={radio.value === selected} onChange={changeValue} />
-                        <label className='form-check-label'>
+                        <label className='form-check-label' htmlFor={radio.label}>
                             <span className="fs-6">{radio.label}</span>
                         </label>
                     </div>
@@ -57,6 +62,7 @@ const Home: FC<{ updateSelected: (e: number) => void, selected: number }>  = ({ 
             })}
         </div>
         <div>{selected}が選択されました。</div>
+        <div className="viwer-message">ビューワが終了しました。お疲れさまでした。</div>
         <button onClick={startViewer}>開始</button>
     </div>
     )

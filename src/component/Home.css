@@ -1,0 +1,23 @@
+.select-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.select-title {
+    padding-top: 4px;
+}
+.form-check-input[type=radio] {
+    display: none; /* ラジオボタンを非表示にする */
+}
+.form-check-input[type="radio"]:checked + label {
+    background: #31A9EE;/* マウス選択時の背景色を指定する */
+    color: #ffffff; /* マウス選択時のフォント色を指定する */
+}
+.form-check-label {
+    margin: 5px; /* ラベル外側の余白を指定する */
+    padding: 5px;
+    cursor: pointer;
+    border: 2px solid #006DD9;/* ボックスの境界線を実線で指定する */
+    border-radius: 5px;
+}

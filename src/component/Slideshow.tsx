@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 
-const Slideshow = () => {
+const Slideshow: FC<{selected: number }> = ({ selected }) => {
     // console.log(selected);
   // ファイル名の配列を格納する
   const imgDir = "./images/"
@@ -29,15 +30,21 @@ const Slideshow = () => {
   useEffect(() => {
     const interval: NodeJS.Timer = setInterval(() => {
        setCount(c => c + 1);
-       (fileNum === fileName.length - 1)? fileNum = 0 : fileNum ++
+       (fileNum === fileName.length - 1)? stopViewer() : fileNum ++
        changeImg(fileNum)
-    }, 1000)
+    }, 1000 * selected)
     return () => clearInterval(interval)
   }, [])
   //入力フォームの表示
   //時間間隔は15秒、30秒、60秒、2分、5分のどれかが選択できる
   //スタートボタンを押すと、スライドショーが始まる
   //全ての画像を表示し終えると、入力フォームに戻る
+  
+  // スライドショーを終了する
+  const navigate = useNavigate()
+  const stopViewer = () => {
+      navigate('/')
+  }
   return (
     <div>
       <div className="imageClass">
