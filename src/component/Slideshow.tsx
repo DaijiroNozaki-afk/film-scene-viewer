@@ -31,6 +31,7 @@ const Slideshow: FC<{
     let nowFile = imgDir + fileName[e]
     setViewImg(nowFile)
     // カウントダウンの数字を戻す#####
+    setCountDown(selected)
   }
   // 一定の時間で画像を切り替える
   const [count, setCount] = useState<number>(0)
@@ -43,10 +44,10 @@ const Slideshow: FC<{
     return () => clearInterval(interval)
   }, [])
   // カウントダウンを表示
-  const [countdown, setCountDown] = useState<number>(0)
+  const [countdown, setCountDown] = useState<number>(selected)
   useEffect(() => {
     const interval: NodeJS.Timer = setInterval(() => {
-       setCountDown(c => c + 1);
+       setCountDown(c => c - 1);
        // 一秒引いて表示する#####
     }, 1000)
     return () => clearInterval(interval)
@@ -64,6 +65,7 @@ const Slideshow: FC<{
   }
   return (
     <div className='p-slideshow'>
+      <p>{countdown}</p>
       <div className="p-ss-view">
       <img src={viewImg} alt="" className="p-ss-img" />
       </div>
