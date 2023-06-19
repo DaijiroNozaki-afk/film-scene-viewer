@@ -29,20 +29,30 @@ const Slideshow: FC<{
   let countNum: number = selected; // 現在のカウント数
   // 一定の時間で画像を切り替える
   const [count, setCount] = useState<number>(selected) // 残りカウント数
+  let intervalNum: number = 3;
+  const [intervalTime, setIntervalTime] = useState<number>(3) //インターバルタイム、初期値は3
   const changeImg = () => {
-    countNum--;
-    if (countNum ===0) {
-      // 画像を切り替える、全ての画像を表示し終えたら、ビューワを終了する
-      (fileNum === fileName.length - 1)? stopViewer() : fileNum ++
-      let nowFile = imgDir + fileName[fileNum]
-      setViewImg(nowFile)
+    if (intervalNum > 0) {
+      intervalNum--
+      setIntervalTime(intervalNum)
+    } else {
+      countNum--;
+      if (countNum ===0) {
+        // 画像を切り替える、全ての画像を表示し終えたら、ビューワを終了する
+        (fileNum === fileName.length - 1)? stopViewer() : fileNum ++
+        let nowFile = imgDir + fileName[fileNum]
+        setViewImg(nowFile)
+        // カウントダウンの数字を戻す
+        countNum = selected
+        // インターバル開始
+        intervalNum = 3
+        setIntervalTime(intervalNum)
+      }
+      // プログレスバーの残りカウント数を更新する
+      setCount(countNum)
       // カウントダウンの数字を戻す
-      countNum = selected
+      setCountDown(selected)
     }
-    // プログレスバーの残りカウント数を更新する
-    setCount(countNum)
-    // カウントダウンの数字を戻す#####
-    setCountDown(selected)
   }
   // カウントダウンを表示
   const [countdown, setCountDown] = useState<number>(selected)
@@ -62,16 +72,20 @@ const Slideshow: FC<{
   }
   return (
     <div className='p-slideshow'>
-      <div className="progress-bar">
-        <div
-          className="progress-bar-done"
-          // style={{ width: `${percent}%` }}
-          style={{ width: `${count/selected*100}%` }}
-        ></div>
-      </div>
-      {/* <p>{countdown}</p> */}
-      <div className="p-ss-view">
-        <img src={viewImg} alt="" className="p-ss-img" />
+      <p style={{display: `${(intervalTime === 0)? "none": "block"}`}}>{intervalTime}インターバル</p>
+      <div className="p-slidemain" 
+        style={{display: `${!(intervalTime === 0)? "none": "block"}`}}>
+        <div className="progress-bar">
+          <div
+            className="progress-bar-done"
+            // style={{ width: `${percent}%` }}
+            style={{ width: `${count/selected*100}%` }}
+          ></div>
+        </div>
+        {/* <p>{countdown}</p> */}
+        <div className="p-ss-view">
+          <img src={viewImg} alt="" className="p-ss-img" />
+        </div>
       </div>
     </div>
   )
