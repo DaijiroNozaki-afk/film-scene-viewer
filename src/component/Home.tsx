@@ -15,7 +15,6 @@ const Home: FC<{
     }>  = ({
          updateSelected, selected, finished
     }) => {
-    console.log(selected)  // 60
     // ラジオボタン切り替えイベント
     const changeValue = (event: React.ChangeEvent<HTMLInputElement>) => updateSelected(
         Number(event.target.value) // Radio ボタンのvalue はどうやらstring 型なので、number 型に変換している
@@ -48,6 +47,10 @@ const Home: FC<{
     const startViewer = () => {
         navigate('/slideshow')
     }
+    //入力フォームの表示
+    //時間間隔は15秒、30秒、60秒、2分、5分のどれかが選択できる
+    //スタートボタンを押すと、スライドショーが始まる
+    //全ての画像を表示し終えると、入力フォームに戻る
     return (
     <div className='container form-check'>
         <h3 className="form-arega">ビューワの設定</h3>

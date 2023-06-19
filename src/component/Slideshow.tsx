@@ -8,7 +8,6 @@ const Slideshow: FC<{
 }> = ({
    selected, setFinished
 }) => {
-    // console.log(selected);
   // ファイル名の配列を格納する
   const imgDir = "./images/"
   const fileName: string[] = [
@@ -27,49 +26,33 @@ const Slideshow: FC<{
   // 現在の画像ファイル名
   const [viewImg, setViewImg] = useState<string>(imgDir + fileName[0])
   // 画像切り替えの関数
-  let countNum = selected;
+  let countNum: number = selected; // 現在のカウント数
   // 一定の時間で画像を切り替える
   const [count, setCount] = useState<number>(selected) // 残りカウント数
   const changeImg = () => {
     countNum--;
-    console.log(countNum);
     if (countNum ===0) {
-      // 画像を切り替える
+      // 画像を切り替える、全ての画像を表示し終えたら、ビューワを終了する
       (fileNum === fileName.length - 1)? stopViewer() : fileNum ++
       let nowFile = imgDir + fileName[fileNum]
       setViewImg(nowFile)
-      // カウントダウンの数字を戻す#####
+      // カウントダウンの数字を戻す
       countNum = selected
     }
+    // プログレスバーの残りカウント数を更新する
     setCount(countNum)
     // カウントダウンの数字を戻す#####
     setCountDown(selected)
   }
-  // useEffect(() => {
-  //   const interval: NodeJS.Timer = setInterval(() => {
-  //      setCount(c => c + 1);
-  //     //  (fileNum === fileName.length - 1)? stopViewer() : fileNum ++
-  //     //  changeImg(fileNum)
-  //   }, 1000 * selected)
-  //   return () => clearInterval(interval)
-  // }, [])
   // カウントダウンを表示
   const [countdown, setCountDown] = useState<number>(selected)
   useEffect(() => {
     const interval: NodeJS.Timer = setInterval(() => {
        setCountDown(c => c - 1);
        changeImg()
-      //  console.log(countdown);
-       // countdown がゼロになったら画像を切り替える
-      //  (countdown === 0)? changeImg() : ""
-       // 画像の終点でビューワを終了する
     }, 1000)
     return () => clearInterval(interval)
   }, [])
-  //入力フォームの表示
-  //時間間隔は15秒、30秒、60秒、2分、5分のどれかが選択できる
-  //スタートボタンを押すと、スライドショーが始まる
-  //全ての画像を表示し終えると、入力フォームに戻る
   
   // スライドショーを終了する
   const navigate = useNavigate()
