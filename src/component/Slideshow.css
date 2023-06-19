@@ -13,3 +13,19 @@
 /* <div className='p-slideshow'>
 <div className="p-ss-view">
 <img src={viewImg} alt="" className="p-ss-img" /> */
+
+
+.progress-bar {
+    background-color: #bbb;
+    height: 5px;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 5px;
+    border-radius: 20px
+  }
+  
+  .progress-bar-done {
+    background-color: orange;
+    height: 100%;
+    border-radius: 20px
+  }
