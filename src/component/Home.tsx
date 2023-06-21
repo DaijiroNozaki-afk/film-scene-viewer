@@ -77,6 +77,7 @@ const Home: FC<{
             }
         </div>
         <button onClick={startViewer}>開始</button>
+        <p className="p-viewer-info">フィルムスタディに使うビューワです。「開始」を押すと、映画やアニメからキャプチャした10種類のシーンを順に表示していきます。描き手は選択した時間間隔内に画像を書き写して映画の効果や演出を学びます。</p>
     </div>
     )
 }
