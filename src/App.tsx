@@ -13,7 +13,7 @@ function App() {
   const [finished, setFinished] = useState<boolean>(false)
   return (
     <div className="App">
-    <Router>
+    <Router basename='/film-scene-viewer'>
       <Header />
       <Routes>
         <Route path="/" element={
