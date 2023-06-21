@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/film-scene-viewer/static/css/main.ed4cfa20.css",
+    "main.js": "/film-scene-viewer/static/js/main.fc1959f4.js",
+    "index.html": "/film-scene-viewer/index.html",
+    "main.ed4cfa20.css.map": "/film-scene-viewer/static/css/main.ed4cfa20.css.map",
+    "main.fc1959f4.js.map": "/film-scene-viewer/static/js/main.fc1959f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ed4cfa20.css",
+    "static/js/main.fc1959f4.js"
+  ]
+}
