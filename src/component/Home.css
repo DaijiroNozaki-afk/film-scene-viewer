@@ -1,20 +1,49 @@
-.select-time {
+.p-select {
+    border: 1px #667 solid;
+    padding: 10px;
+    margin-top: 10px;
+    line-height: 2em;
+}
+.p-select-time {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
-.select-title {
+.p-select-title {
     padding-top: 4px;
 }
-.form-check-input[type=radio] {
+
+.p-select-btn {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	width: 120px;
+	margin: auto;
+	padding: 1rem 2rem;
+	font-weight: bold;
+	border: 2px solid #27acd9;
+	background: #27acd9;
+	color: #fff;
+	border-radius: 100vh;
+	transition: 0.6s;
+}
+.p-select-btn:hover {
+	color: #27acd9;
+	background: #fff;
+}
+.p-form-check {
+    width: 60%;
+    margin : 0 20%;
+}
+.p-form-check-input[type=radio] {
     display: none; /* ラジオボタンを非表示にする */
 }
-.form-check-input[type="radio"]:checked + label {
+.p-form-check-input[type="radio"]:checked + label {
     background: #31A9EE;/* マウス選択時の背景色を指定する */
     color: #ffffff; /* マウス選択時のフォント色を指定する */
 }
-.form-check-label {
+.p-form-check-label {
     margin: 5px; /* ラベル外側の余白を指定する */
     padding: 5px;
     cursor: pointer;

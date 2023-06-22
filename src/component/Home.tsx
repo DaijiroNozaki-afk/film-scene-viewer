@@ -52,31 +52,34 @@ const Home: FC<{
     //スタートボタンを押すと、スライドショーが始まる
     //全ての画像を表示し終えると、入力フォームに戻る
     return (
-    <div className='container form-check'>
-        <h3 className="form-arega">ビューワの設定</h3>
-        <div className="select-time">
-            <p className="select-title">間隔</p>
-            {radioButtons.map(radio => {
-                return (
-                    <div className="col-4" key={radio.label}>
-                        {/* checked 属性に式を定義する */}
-                        <input type="radio" name="sweets" className="form-check-input"
-                            id={radio.label}
-                            value={radio.value} checked={radio.value === selected} onChange={changeValue} />
-                        <label className='form-check-label' htmlFor={radio.label}>
-                            <span className="fs-6">{radio.label}</span>
-                        </label>
-                    </div>
-                )
-            })}
+    <div className='container p-form-check'>
+        <div className="p-select">
+            <h3 className="form-arega">ビューワの設定</h3>
+            <div className="p-select-time">
+                <p className="p-select-title">間隔</p>
+                {radioButtons.map(radio => {
+                    return (
+                        <div className="col-4" key={radio.label}>
+                            {/* checked 属性に式を定義する */}
+                            <input type="radio" name="sweets" className="p-form-check-input"
+                                id={radio.label}
+                                value={radio.value} checked={radio.value === selected} onChange={changeValue} />
+                            <label className='p-form-check-label' htmlFor={radio.label}>
+                                <span className="fs-6">{radio.label}</span>
+                            </label>
+                        </div>
+                    )
+                })}
+            </div>
+            <div>{selected}が選択されました。</div>
+            <div className="viwer-message">
+                { 
+                    finished ? `ビューワを終了しました。お疲れさまでした。` : "フィルムビューワを開始できます。"
+                }
+            </div>
+            <button onClick={startViewer}
+                className='p-select-btn'>開始</button>
         </div>
-        <div>{selected}が選択されました。</div>
-        <div className="viwer-message">
-            { 
-                finished ? `ビューワを終了しました。お疲れさまでした。` : "フィルムビューワを開始できます。"
-            }
-        </div>
-        <button onClick={startViewer}>開始</button>
         <p className="p-viewer-info">フィルムスタディに使うビューワです。「開始」を押すと、映画やアニメからキャプチャした10種類のシーンを順に表示していきます。描き手は選択した時間間隔内に画像を書き写して映画の効果や演出を学びます。</p>
     </div>
     )

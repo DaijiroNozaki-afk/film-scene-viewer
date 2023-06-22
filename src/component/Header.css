@@ -1,0 +1,23 @@
+.p-header {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #cbecef;
+}
+.p-head-h1 {
+    font-size: 1.5em;
+}
+.p-head-ul {
+    list-style-type: none;
+}
+.p-head-li {
+
+}
+.c-nlink {
+    color: #426cec;
+    text-decoration: none;
+}
+.c-nlink:hover {
+    color: #272de0;
+}
