@@ -22,23 +22,23 @@ const Home: FC<{
     // ラジオボタン
     const radioButtons: Radio[] = [
         {
-            label: "15s",
+            label: "15",
             value: 15
         },
         {
-            label: "30s",
+            label: "30",
             value: 30
         },
         {
-            label: "60s",
+            label: "60",
             value: 60
         },
         {
-            label: "120s",
+            label: "120",
             value: 120
         },
         {
-            label: "300s",
+            label: "300",
             value: 300
         }
     ]
@@ -54,7 +54,7 @@ const Home: FC<{
     return (
     <div className='container p-form-check'>
         <div className="p-select">
-            <h3 className="form-arega">ビューワの設定</h3>
+            <h3 className="p-select-h3">ビューワの設定</h3>
             <div className="p-select-time">
                 <p className="p-select-title">間隔</p>
                 {radioButtons.map(radio => {
@@ -71,7 +71,7 @@ const Home: FC<{
                     )
                 })}
             </div>
-            <div>{selected}が選択されました。</div>
+            <div>{selected}秒が選択されました。</div>
             <div className="viwer-message">
                 { 
                     finished ? `ビューワを終了しました。お疲れさまでした。` : "フィルムビューワを開始できます。"
@@ -81,6 +81,7 @@ const Home: FC<{
                 className='p-select-btn'>開始</button>
         </div>
         <p className="p-viewer-info">フィルムスタディに使うビューワです。「開始」を押すと、映画やアニメからキャプチャした10種類のシーンを順に表示していきます。描き手は選択した時間間隔内に画像を書き写して映画の効果や演出を学びます。</p>
+        <p className="p-viewer-info m-tc-gray">※現在、React のみで作成されているので、同じ画像が同じ順番で表示されます。</p>
     </div>
     )
 }

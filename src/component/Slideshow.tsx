@@ -71,23 +71,25 @@ const Slideshow: FC<{
     navigate('/')
   }
   return (
-    <div className='p-slideshow'>
-      <p style={{display: `${(intervalTime === 0)? "none": "block"}`}}>{intervalTime}インターバル</p>
-      <div className="p-slidemain" 
-        style={{display: `${!(intervalTime === 0)? "none": "block"}`}}>
-        <div className="progress-bar">
-          <div
-            className="progress-bar-done"
-            // style={{ width: `${percent}%` }}
-            style={{ width: `${count/selected*100}%` }}
-          ></div>
-        </div>
-        {/* <p>{countdown}</p> */}
-        <div className="p-ss-view">
-          <img src={viewImg} alt="" className="p-ss-img" />
+    <>
+      <div className='p-slideshow'>
+        <p className='p-slideshow-interval' style={{display: `${(intervalTime === 0)? "none": "block"}`}}>{intervalTime}</p>
+        <div className="p-slidemain" 
+          style={{display: `${!(intervalTime === 0)? "none": "block"}`}}>
+          <div className="progress-bar">
+            <div
+              className="progress-bar-done"
+              // style={{ width: `${percent}%` }}
+              style={{ width: `${count/selected*100}%` }}
+            ></div>
+          </div>
+          {/* <p>{countdown}</p> */}
+          <div className="p-ss-view">
+            <img src={viewImg} alt="" className="p-ss-img" />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

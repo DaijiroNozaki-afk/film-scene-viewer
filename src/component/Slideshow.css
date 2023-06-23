@@ -1,31 +1,38 @@
 .p-slideshow {
     width: 100%;
+    max-width: 1168px;
+    margin: 0 auto;
     height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .p-ss-view {
-    width: 100%;
 }
 .p-ss-img {
     width: 100%;
     height: auto;
-
 }
-/* <div className='p-slideshow'>
-<div className="p-ss-view">
-<img src={viewImg} alt="" className="p-ss-img" /> */
-
+.p-slidemain {
+    width: 96%;
+    height: auto;
+    margin: 2%;
+}
+.p-slideshow-interval {
+    font-size: 40px;
+    font-weight: bold;
+}
 
 .progress-bar {
     background-color: #bbb;
     height: 5px;
-    width: 90%;
-    margin-left: 5%;
-    margin-bottom: 5px;
-    border-radius: 20px
-  }
-  
-  .progress-bar-done {
+    width: 100%;
+    margin: 2% 0;
+    border-radius: 5px;
+}
+
+.progress-bar-done {
     background-color: orange;
     height: 100%;
-    border-radius: 20px
-  }
+    border-radius: 5px;
+}
